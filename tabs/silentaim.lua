@@ -28,10 +28,10 @@ local module = {
 }
 
 local file, info = pcall(function()
-    return readfile('ProjectJoy/whitelisted_players.json')
+    return readfile('ProjectLore/whitelisted_players.json')
 end)
 if file then
-    module._whitelistedPlayers = httpService:JSONDecode(readfile('ProjectJoy/whitelisted_players.json'))
+    module._whitelistedPlayers = httpService:JSONDecode(readfile('ProjectLore/whitelisted_players.json'))
 end
 
 function module:_returnParts(character)
@@ -300,7 +300,7 @@ function new(window)
         local player = players:FindFirstChild(module._target)
         if player and not table.find(module._whitelistedPlayers,player.UserId) then
             table.insert(module._whitelistedPlayers,player.UserId)
-            writefile('ProjectJoy/whitelisted_players.json',httpService:JSONEncode(module._whitelistedPlayers))
+            writefile('ProjectLore/whitelisted_players.json',httpService:JSONEncode(module._whitelistedPlayers))
         end
     end)
     
@@ -310,7 +310,7 @@ function new(window)
             for i,v in pairs(module._whitelistedPlayers) do
                 if v == player.UserId or v == player.Name then
                     table.remove(module._whitelistedPlayers,i)
-                    return writefile('ProjectJoy/whitelisted_players.json',httpService:JSONEncode(module._whitelistedPlayers))
+                    return writefile('ProjectLore/whitelisted_players.json',httpService:JSONEncode(module._whitelistedPlayers))
                 end
             end
         end
