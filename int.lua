@@ -3,24 +3,24 @@ local tabs = { 'silentaim', 'buyables', 'bindables', 'target' }
 local files = { 'whitelisted_players.json', 'profiles.json' }
 local engine = loadstring(game:HttpGet("https://raw.githubusercontent.com/Singularity5490/rbimgui-2/main/rbimgui-2.lua"))()
 local window = engine.new({
-    text = "Project Joy",
+    text = "Project Lore",
     size = Vector2.new(500, 400),
     color = Color3.fromRGB(25, 25, 25)
 })
 
 local function import(file)
-    return loadstring(game:HttpGet('https://raw.githubusercontent.com/not-A88/project-joy/main/'..file..'.lua'))()
+    return loadstring(game:HttpGet('https://raw.githubusercontent.com/not-A88/project-lore/main/'..file..'.lua'))()
 end
 
 -- folder / file setup.
 local files = { 'whitelisted_players.json', 'profiles.json' }
 for _, filePath in pairs(files) do
     local file, info = pcall(function()
-        return readfile('ProjectJoy/'..filePath)
+        return readfile('ProjectLore/'..filePath)
     end)
     if not file then
-        makefolder('ProjectJoy')
-        writefile('ProjectJoy/'..filePath,'[]')
+        makefolder('ProjectLore')
+        writefile('ProjectLore/'..filePath,'[]')
     end
 end
 
